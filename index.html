@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Orkinos Microsystems</title>
+<meta name="description" content="Orkinos Microsystems is the authorised UK distributor of IME-DC: diabetes care, the Feverguard T31 wearable thermometer and home self-tests.">
+<link rel="icon" href="mark.png">
+<style>
+/* Layout idea: deep water. Orkinos is the bluefin tuna, so the home page opens on a living shoal;
+   everything else is real products and photographs on a dark, quiet ground with hairlines. */
+@font-face{font-family:"Cormorant";src:url("cormorant.woff2") format("woff2");font-weight:300 700;font-display:swap}
+@font-face{font-family:"Albert Sans";src:url("albert-sans.woff2") format("woff2");font-weight:300 800;font-display:swap}
+:root{
+  color-scheme:dark;
+  --bg:#050a13;
+  --panel:#0b1423;
+  --fg:#e9eef8;
+  --muted:#93a0b9;
+  --line:rgba(255,255,255,.12);
+  --cobalt:#7aa2ff;
+  --coral:#ff8a6b;
+  --emerald:#5fe0b4;
+  --amber:#ffc970;
+  --accent:#a9c4ff;
+  --display:"Cormorant","Iowan Old Style","Palatino Linotype",Georgia,serif;
+  --body:"Albert Sans","Helvetica Neue",Arial,sans-serif;
+  --gutter:clamp(18px,4.5vw,64px);
+  --max:1280px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--body);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased}
+img,svg{max-width:100%;display:block}
+a{color:inherit}
+p{margin:0}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 var(--gutter)}
+h1,h2,h3{font-family:var(--display);font-weight:400;letter-spacing:-.015em;line-height:.98;margin:0;text-wrap:balance}
+h1{font-size:clamp(3.1rem,7.4vw,6.6rem)}
+h2{font-size:clamp(2.2rem,4.6vw,3.9rem)}
+h3{font-size:1.75rem;font-weight:500;line-height:1.05;letter-spacing:-.005em}
+.lede{font-size:clamp(1.05rem,1.45vw,1.2rem);max-width:54ch;color:var(--muted)}
+.muted{color:var(--muted)}
+.small{font-size:.88rem}
+.view[hidden]{display:none}
+.t-cobalt{--accent:var(--cobalt)}.t-coral{--accent:var(--coral)}.t-emerald{--accent:var(--emerald)}.t-amber{--accent:var(--amber)}
+.c-cobalt{background:var(--cobalt)}.c-coral{background:var(--coral)}.c-emerald{background:var(--emerald)}.c-amber{background:var(--amber)}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;font-family:var(--body);font-weight:600;font-size:.98rem;text-decoration:none;padding:15px 26px;border-radius:4px;border:1px solid var(--fg);background:var(--fg);color:var(--bg);cursor:pointer;transition:background .2s,color .2s,border-color .2s}
+.btn:hover{background:var(--accent);border-color:var(--accent)}
+.btn.ghost,.btn.light{background:transparent;color:var(--fg);border-color:var(--line)}
+.btn.ghost:hover,.btn.light:hover{border-color:var(--fg);background:transparent}
+.actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:34px}
+.chip{display:inline-block;font-size:.84rem;font-weight:600;color:var(--accent);margin-bottom:18px}
+
+header.top{position:sticky;top:0;z-index:30;background:rgba(5,10,19,.72);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid var(--line)}
+.top .wrap{display:flex;align-items:center;gap:18px;min-height:74px}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none;flex:none}
+.brand img{height:40px;width:auto;filter:invert(1)}
+.brand b{font-family:var(--body);font-weight:600;font-size:1rem;letter-spacing:.01em;display:block;line-height:1.1}
+.brand small{display:block;font-size:.74rem;color:var(--muted)}
+nav.main{margin-left:auto;display:flex;gap:2px;overflow-x:auto;scrollbar-width:none}
+nav.main::-webkit-scrollbar{display:none}
+nav.main a{display:flex;align-items:center;gap:8px;font-weight:500;font-size:.93rem;text-decoration:none;padding:10px 14px;white-space:nowrap;color:var(--muted);border-bottom:1px solid transparent}
+nav.main a i{width:6px;height:6px;border-radius:50%;display:block}
+nav.main a:hover,nav.main a[aria-current="page"]{color:var(--fg)}
+nav.main a[aria-current="page"]{border-bottom-color:var(--fg)}
+nav.main a.cta{color:var(--fg);border:1px solid var(--line);border-radius:4px;margin-left:10px}
+nav.main a.cta:hover{border-color:var(--fg)}
+
+/* home hero: the shoal */
+.hero{position:relative;overflow:hidden;border-bottom:1px solid var(--line);background:radial-gradient(90% 70% at 78% 18%,#10305c 0%,rgba(9,24,48,.55) 38%,transparent 70%),linear-gradient(180deg,#06101f,var(--bg))}
+#shoal{position:absolute;inset:0;width:100%;height:100%;display:block;pointer-events:none}
+#shoal.glyph{-webkit-mask-image:linear-gradient(90deg,rgba(0,0,0,.2) 0%,#000 44%);mask-image:linear-gradient(90deg,rgba(0,0,0,.2) 0%,#000 44%)}
+.hero .wrap{position:relative;z-index:1;min-height:clamp(520px,50vw,680px);padding-top:clamp(48px,7vw,96px);padding-bottom:clamp(44px,6vw,84px)}
+.hero.home .wrap{display:flex;flex-direction:column;justify-content:flex-end}
+.hero.home h1{max-width:11ch}
+.hero .lede{margin-top:26px;color:#c3cde0}
+.hero.cat{background:radial-gradient(70% 80% at 76% 40%,color-mix(in srgb,var(--accent) 22%,#0b2244) 0%,rgba(9,24,48,.5) 42%,transparent 72%),linear-gradient(180deg,#06101f,var(--bg))}
+
+section{padding:clamp(56px,8vw,120px) 0}
+.sec-head{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:clamp(16px,4vw,64px);align-items:end;margin-bottom:clamp(28px,4vw,56px)}
+
+/* category doors */
+.tiles{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
+.tile{position:relative;display:flex;flex-direction:column;justify-content:flex-end;aspect-ratio:3/4.3;border-radius:6px;overflow:hidden;text-decoration:none;color:#fff;background:var(--panel);isolation:isolate}
+.tile img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;transition:transform .8s cubic-bezier(.2,.7,.2,1)}
+.tile:hover img{transform:scale(1.06)}
+.tile::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(5,10,19,.05) 30%,rgba(5,10,19,.92) 92%)}
+.tile .in{padding:22px;display:grid;gap:8px;border-top:2px solid var(--accent);background:linear-gradient(180deg,transparent,rgba(5,10,19,.4))}
+.tile h3{font-size:2rem}
+.tile p{font-size:.94rem;color:#c9d2e3}
+.tile .state{font-size:.8rem;font-weight:600;color:var(--accent)}
+
+/* the one distributor statement */
+.statement{border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.statement .wrap{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:clamp(24px,5vw,80px);align-items:end}
+.statement h2{font-size:clamp(2.6rem,5.6vw,4.9rem)}
+
+.split{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:clamp(24px,5vw,72px);align-items:center}
+.photo{margin:0;border-radius:6px;overflow:hidden;aspect-ratio:16/10;background:var(--panel)}
+.photo img{width:100%;height:100%;object-fit:cover}
+.photo.wide{aspect-ratio:21/9}
+.visual.wide{aspect-ratio:4/3;max-width:500px}
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:clamp(24px,4vw,44px)}
+.photo.sq{aspect-ratio:1/1;position:relative}
+.photo.sq figcaption{position:absolute;left:0;right:0;bottom:0;padding:40px 20px 16px;font-size:.9rem;font-weight:500;color:#fff;background:linear-gradient(180deg,transparent,rgba(5,10,19,.8))}
+@media (max-width:560px){.duo{grid-template-columns:1fr}}
+.photo.top{aspect-ratio:21/7.6}
+.photo.top img{object-position:50% 0}
+.rows{list-style:none;margin:0;padding:0}
+.rows li{display:grid;grid-template-columns:170px minmax(0,1fr);gap:16px;padding:18px 0;border-top:1px solid var(--line);color:var(--muted)}
+.rows li:last-child{border-bottom:1px solid var(--line)}
+.rows b{font-family:var(--display);font-weight:500;font-size:1.45rem;line-height:1.1;color:var(--fg)}
+.four{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;border-top:1px solid var(--line)}
+.mini{padding:26px 24px 8px 0;display:grid;gap:10px;align-content:start}
+.mini+.mini{padding-left:24px;border-left:1px solid var(--line)}
+.mini h3{font-size:1.5rem}
+.mini p{font-size:.95rem;color:var(--muted)}
+
+/* category hero */
+.flood{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:clamp(20px,4vw,64px);align-items:center}
+.flood .txt{padding:0}
+.flood .lede{margin-top:22px}
+.crumb{font-size:.88rem;color:var(--muted);margin-bottom:26px}
+.crumb a{text-decoration:none}
+.crumb a:hover{color:var(--fg)}
+.visual{position:relative;margin:0;width:100%;max-width:400px;justify-self:center;aspect-ratio:1/1;border-radius:6px;overflow:hidden;background:var(--panel);box-shadow:0 40px 80px rgba(0,0,0,.45)}
+.visual.cut{background:none;box-shadow:none;overflow:visible;max-width:340px}
+.visual img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.visual.cut img{object-fit:contain;padding:0;filter:drop-shadow(0 30px 44px rgba(0,0,0,.6))}
+
+/* product cards */
+.cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:12px 12px 22px;display:flex;flex-direction:column;gap:12px}
+.card .art{position:relative;border-radius:3px;aspect-ratio:4/3;overflow:hidden}
+.card .art img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;padding:var(--pad,12px)}
+.card h3,.card p,.card dl{margin-left:12px;margin-right:12px}
+.card h3{margin-top:6px}
+.card p{color:var(--muted);font-size:.97rem}
+.card dl{margin-top:auto;margin-bottom:0;display:grid;grid-template-columns:auto 1fr;gap:6px 16px;font-size:.88rem;border-top:1px solid var(--line);padding-top:14px}
+.card dt{color:var(--muted)}
+.card dd{margin:0;text-align:right;font-weight:500}
+.card .top{display:flex;justify-content:space-between;align-items:center;gap:10px;margin:12px 12px 0}
+.pill{font-size:.78rem;font-weight:600;color:var(--emerald)}
+.note{margin-top:20px;max-width:72ch}
+.rows.tests li{grid-template-columns:minmax(0,1fr) minmax(0,1.7fr) 170px 80px;align-items:baseline}
+.rows.tests .pill{text-align:right}
+@media (max-width:760px){.rows.tests li{grid-template-columns:1fr;gap:4px}.rows.tests .pill{text-align:left}}
+
+.panel{border-top:1px solid var(--line);padding-top:clamp(40px,6vw,88px)}
+.needle-grid{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:clamp(20px,4vw,56px);align-items:center;margin-top:clamp(20px,3vw,40px)}
+.gauge{background:#eef2fa;border-radius:6px;padding:clamp(16px,3vw,28px)}
+.gauge svg{width:100%;height:auto}
+.prod{margin:0;border-radius:6px;overflow:hidden;background:#e9e9e9}
+.prod img{width:100%;height:auto}
+table.spec{width:100%;border-collapse:collapse;font-size:.95rem;font-variant-numeric:tabular-nums}
+table.spec th,table.spec td{text-align:left;padding:14px 10px 14px 0;border-bottom:1px solid var(--line)}
+table.spec th{font-weight:500;font-size:.82rem;color:var(--muted)}
+.tablewrap{overflow-x:auto}
+
+.fg-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);gap:clamp(24px,5vw,72px);align-items:start}
+.fg-left{display:grid;gap:14px}
+.monitor{background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:clamp(20px,3vw,32px)}
+.monitor .row{display:flex;justify-content:space-between;align-items:baseline;gap:16px;flex-wrap:wrap}
+.readout{font-family:var(--display);font-weight:400;font-size:clamp(4rem,9vw,6.4rem);line-height:.85;font-variant-numeric:tabular-nums lining-nums}
+.readout span{font-size:.36em;margin-left:6px;color:var(--muted)}
+.clock{font-weight:500;font-variant-numeric:tabular-nums;text-align:right}
+.clock small{display:block;color:var(--muted);font-size:.8rem}
+.monitor svg{margin-top:16px;width:100%;height:auto}
+.monitor .cap{font-size:.8rem;color:var(--muted);margin-top:10px}
+
+.ph{display:grid;gap:18px;justify-items:start}
+.cta-band{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;margin-top:clamp(28px,4vw,56px);padding:clamp(22px,3vw,36px);border-radius:6px;border:1px solid color-mix(in srgb,var(--accent) 45%,transparent);background:linear-gradient(100deg,color-mix(in srgb,var(--accent) 16%,transparent),transparent 70%)}
+.cta-band .lede{color:var(--fg)}
+
+.contact{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:clamp(24px,5vw,80px)}
+form{display:grid;gap:14px;background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:clamp(20px,3vw,36px)}
+.f2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+label{display:grid;gap:6px;font-size:.86rem;font-weight:500;color:var(--muted)}
+input,select,textarea{font:inherit;color:var(--fg);background:var(--bg);border:1px solid var(--line);border-radius:4px;padding:13px 14px;width:100%}
+input:focus,select:focus,textarea:focus{border-color:var(--accent)}
+textarea{min-height:120px;resize:vertical}
+.out{border:1px dashed var(--line);border-radius:6px;padding:18px;display:none;gap:12px;margin-top:14px}
+.out.show{display:grid}
+.out pre{margin:0;white-space:pre-wrap;font-family:var(--body);font-size:.92rem}
+dl.details{margin:30px 0 0}
+dl.details div{display:grid;grid-template-columns:170px minmax(0,1fr);gap:16px;padding:15px 0;border-top:1px solid var(--line)}
+dl.details dt{font-size:.86rem;color:var(--muted);padding-top:2px}
+dl.details dd{margin:0}
+.tbc{font-size:.84rem;color:var(--muted);border:1px solid var(--line);padding:2px 9px;border-radius:3px}
+
+footer{border-top:1px solid var(--line);padding:64px 0 44px;margin-top:clamp(40px,6vw,80px)}
+footer img{height:74px;width:auto;filter:invert(1)}
+.foot{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr) minmax(0,1fr);gap:32px}
+.foot ul{list-style:none;margin:12px 0 0;padding:0;display:grid;gap:8px}
+.foot a{text-decoration:none;color:var(--muted)}
+.foot a:hover{color:var(--fg)}
+.foot .k{font-size:.86rem;color:var(--fg);font-weight:600}
+.legal{margin-top:44px;padding-top:22px;border-top:1px solid var(--line);font-size:.82rem;color:var(--muted);display:grid;gap:8px;max-width:95ch}
+
+@media (max-width:980px){
+  .sec-head,.statement .wrap,.split,.flood,.needle-grid,.fg-grid,.contact{grid-template-columns:1fr}
+  .tiles{grid-template-columns:1fr 1fr}
+  .four{grid-template-columns:1fr 1fr}
+  .mini:nth-child(3){padding-left:0;border-left:0}
+  .mini:nth-child(n+3){border-top:1px solid var(--line)}
+  .cards{grid-template-columns:1fr}
+  .foot{grid-template-columns:1fr 1fr}
+  .visual{max-width:300px;margin:26px 0}
+  .visual.cut{max-width:240px}
+  .hero.cat .wrap{min-height:0}
+}
+@media (max-width:560px){
+  body{font-size:16px}
+  .brand small{display:none}
+  .top .wrap{flex-wrap:wrap;gap:4px;padding-top:10px;padding-bottom:4px;min-height:0}
+  nav.main{margin-left:0;width:100%}
+  nav.main a{padding:9px 10px;font-size:.88rem}
+  .tiles,.four,.f2,.foot{grid-template-columns:1fr}
+  .tile{aspect-ratio:4/3}
+  .mini,.mini+.mini{padding-left:0;border-left:0;border-top:1px solid var(--line)}
+  .mini:first-child{border-top:0}
+  .rows li,dl.details div{grid-template-columns:1fr;gap:4px}
+  .photo.wide{aspect-ratio:4/3}
+  .hero.home .wrap{min-height:560px}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.btn,.tile img{transition:none}}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#home" aria-label="Orkinos Microsystems, home">
+      <img src="mark.png" alt="" width="320" height="429">
+      <span><b>Orkinos Microsystems</b><small>United Kingdom</small></span>
+    </a>
+    <nav class="main" aria-label="Main">
+      <a href="#home" data-nav="home">Home</a>
+      <a href="#diabetes" data-nav="diabetes"><i class="c-cobalt"></i>Diabetes</a>
+      <a href="#temperature" data-nav="temperature"><i class="c-coral"></i>Temperature</a>
+      <a href="#tests" data-nav="tests"><i class="c-emerald"></i>Tests</a>
+      <a href="#coming-next" data-nav="coming-next"><i class="c-amber"></i>Coming next</a>
+      <a class="cta" href="#contact" data-nav="contact">Trade enquiries</a>
+    </nav>
+  </div>
+</header>
+
+
+<main>
+
+<!-- ============ HOME ============ -->
+<div class="view" data-view="home">
+<canvas id="shoal" aria-hidden="true"></canvas>
+<div class="hero home water">
+  <div class="wrap">
+    <h1>Vertically integrated healthcare solutions.</h1>
+    <p class="lede">We bring diabetes care and the Feverguard T31 wearable thermometer to the United Kingdom, and supply them to wholesalers, pharmacies and families.</p>
+    <div class="actions">
+      <a class="btn" href="#contact">Open a trade account</a>
+      <a class="btn ghost" href="#diabetes">See the range</a>
+    </div>
+  </div>
+</div>
+
+<section>
+<div class="wrap">
+  <div class="sec-head"><h2>The range</h2><p class="lede">Diabetes care and temperature are available now. Self-tests are being finalised, and a fourth category is on its way.</p></div>
+  <div class="tiles">
+    <a class="tile t-cobalt" href="#diabetes"><img src="diabetes.jpg" alt=""><div class="in"><h3>Diabetes care</h3><p>Meter, test strips, lancets and IME-Fine Comfort pen needles.</p></div></a>
+    <a class="tile t-coral" href="#temperature"><img src="temperature.jpg" alt="" style="object-position:38% 50%"><div class="in"><h3>Temperature</h3><p>Feverguard T31, a wearable thermometer that reads continuously.</p></div></a>
+    <a class="tile t-emerald" href="#tests"><img src="tests.jpg" alt="" style="object-position:62% 50%"><div class="in"><span class="state">In preparation</span><h3>Self-tests</h3><p>Rapid tests for use at home, being finalised for the UK.</p></div></a>
+    <a class="tile t-amber" href="#coming-next"><img src="coming-next.jpg" alt="" style="object-position:70% 50%"><div class="in"><span class="state">To be announced</span><h3>Coming next</h3><p>A further category we are adding to the range.</p></div></a>
+  </div>
+</div>
+</section>
+
+<section class="statement">
+  <div class="wrap">
+    <h2>The United Kingdom distributor of IME-DC.</h2>
+    <div>
+      <p class="lede">IME-DC is a healthcare products company based in Istanbul, known for blood glucose monitoring systems, insulin pen needles and single-use lancets. UK customers order from us, and we handle import, stock, delivery and after-sales support.</p>
+      <div class="actions"><a class="btn ghost" href="https://imedc.com.tr" rel="noopener">Visit imedc.com.tr</a></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap split">
+    <figure class="photo"><img src="home.jpg" alt="A pharmacist handing a customer a small box across a pharmacy counter"></figure>
+    <div>
+      <h2>One company to call</h2>
+      <p class="lede" style="margin:16px 0 24px">Import, stock, delivery and support sit with one team in the UK. Whoever you are, you deal with the people responsible for the product.</p>
+      <ul class="rows">
+        <li><b>Wholesalers</b><p>Listing and supply for pharmacy wholesalers and distributors.</p></li>
+        <li><b>Pharmacies</b><p>Direct accounts for independent pharmacies and groups.</p></li>
+        <li><b>Clinics</b><p>Private practices and prescribers who want the IME-DC range.</p></li>
+        <li><b>Families</b><p>Feverguard T31 for parents, nurseries and schools.</p></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section style="border-top:1px solid var(--line)">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>The systems behind the supply</h2>
+      <p class="lede">The Microsystems in our name is the software side. We build the ordering, stock and record-keeping tools the business runs on.</p>
+    </div>
+    <div class="four">
+      <div class="mini"><h3>Online ordering</h3><p>Consumer and trade ordering for the products we distribute.</p></div>
+      <div class="mini"><h3>Stock and traceability</h3><p>Batch and lot records from import to delivery.</p></div>
+      <div class="mini"><h3>Regulatory records</h3><p>Registrations, complaints and post-market records.</p></div>
+      <div class="mini"><h3>Internal tools</h3><p>Reporting and integrations that keep a small team fast.</p></div>
+    </div>
+  </div>
+</section>
+</div>
+
+<!-- ============ DIABETES ============ -->
+<div class="view" data-view="diabetes" hidden>
+<div class="hero cat water t-cobalt">
+  <div class="wrap flood">
+    <div class="txt">
+      <p class="crumb"><a href="#home">Home</a> / Diabetes care</p>
+      <span class="chip">By IME-DC</span>
+      <h1>Diabetes care</h1>
+      <p class="lede">The IME-DC self-monitoring system: a meter, the test strips that go with it, single-use lancets and pen needles.</p>
+      <div class="actions"><a class="btn" href="#contact" data-interest="Diabetes care (IME-DC)">Request trade pricing</a></div>
+    </div>
+    <figure class="visual cut"><img src="p-meter.png" alt="IME-DC blood glucose meter"></figure>
+  </div>
+</div>
+<section>
+  <div class="wrap">
+    <div class="cards">
+      <article class="card">
+        <div class="art" style="background:#fff"><img src="p-meter.jpg" alt="IME-DC blood glucose meter"></div>
+        <h3>IME-DC meter</h3>
+        <p>Blood glucose meter for self-testing at home, with a large, clear display.</p>
+        <dl><dt>Type</dt><dd>Blood glucose meter</dd><dt>Brand</dt><dd>IME-DC</dd><dt>Supplied as</dt><dd>Meter kit</dd></dl>
+      </article>
+      <article class="card">
+        <div class="art" style="background:#e6e6e6"><img src="p-strips.jpg" alt="IME-DC test strips, box and vial of 50"></div>
+        <h3>IME-DC DS2 test strips</h3>
+        <p>Test strips for the IME-DC meter, in a resealable vial.</p>
+        <dl><dt>Pack</dt><dd>50 strips</dd><dt>For use with</dt><dd>IME-DC meter</dd><dt>Use</dt><dd>Single use</dd></dl>
+      </article>
+      <article class="card">
+        <div class="art" style="background:#d4d4d4;--pad:0"><img src="p-lancets.jpg" alt="Dextra lancets, box of 100"></div>
+        <h3>Dextra lancets</h3>
+        <p>Sterile 30G lancets from IME-DC for taking a capillary blood sample.</p>
+        <dl><dt>Pack</dt><dd>100 lancets</dd><dt>Gauge</dt><dd>30G (0.30 mm)</dd><dt>Use</dt><dd>Single use</dd></dl>
+      </article>
+    </div>
+    <p class="small muted note">Full specifications, instructions for use and declarations of conformity are available to trade customers on request. Always read the label and instructions for use.</p>
+  </div>
+</section>
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="panel">
+      <div class="sec-head" style="margin-bottom:clamp(20px,3vw,32px)">
+        <h2>IME-Fine Comfort pen needles</h2>
+        <p class="lede muted">A fine-gauge range in four lengths, so prescribers and patients can match the needle to the injection technique they have been advised to use.</p>
+      </div>
+      <figure class="prod"><img src="p-needles.jpg" alt="IME-Fine Comfort pen needle boxes in 4, 5, 6 and 8 mm with individually sealed needles"></figure>
+      <div class="needle-grid">
+        <div class="gauge">
+          <svg viewBox="0 0 520 250" role="img" aria-label="Four pen needles drawn to the same scale: 4, 5, 6 and 8 millimetres long">
+            <text x="0" y="16" font-family="Albert Sans, Arial, sans-serif" font-size="12" font-weight="500" fill="#566080">Length, drawn to one scale</text>
+            <g id="needleset"></g>
+            <line x1="0" y1="212" x2="520" y2="212" stroke="#0b1230" stroke-width="2"/>
+          </svg>
+        </div>
+        <div>
+          <div class="tablewrap">
+            <table class="spec">
+              <thead><tr><th>Product</th><th>Gauge</th><th>Length</th><th>Pack</th></tr></thead>
+              <tbody>
+                <tr><td>IME-Fine Comfort</td><td>32G (0.23 mm)</td><td>4 mm</td><td>100</td></tr>
+                <tr><td>IME-Fine Comfort</td><td>32G (0.23 mm)</td><td>5 mm</td><td>100</td></tr>
+                <tr><td>IME-Fine Comfort</td><td>32G (0.23 mm)</td><td>6 mm</td><td>100</td></tr>
+                <tr><td>IME-Fine Comfort</td><td>31G (0.25 mm)</td><td>8 mm</td><td>100</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="small muted" style="margin-top:16px;max-width:58ch">Sterile and for single use. The right needle length is a clinical decision: follow the advice of your diabetes care team.</p>
+        </div>
+      </div>
+    </div>
+    <figure class="photo wide" style="margin-top:clamp(24px,4vw,44px);margin-bottom:0"><img src="diabetes.jpg" alt="A person checking their blood glucose at a kitchen table"></figure>
+    <div class="cta-band t-cobalt"><p class="lede">Stock the IME-DC diabetes range. We will send pricing, pack details and documentation.</p><a class="btn" href="#contact" data-interest="Diabetes care (IME-DC)">Request trade pricing</a></div>
+  </div>
+</section>
+</div>
+
+<!-- ============ TEMPERATURE ============ -->
+<div class="view" data-view="temperature" hidden>
+<div class="hero cat water t-coral">
+  <div class="wrap flood">
+    <div class="txt">
+      <p class="crumb"><a href="#home">Home</a> / Temperature</p>
+      <span class="chip">Feverguard T31</span>
+      <h1>Temperature</h1>
+      <p class="lede">Feverguard T31 is a wearable thermometer. It is worn on the body and sends continuous readings to an app on your phone, so you can follow a child's temperature through the night without waking them.</p>
+      <div class="actions"><a class="btn" href="#contact" data-interest="Temperature (Feverguard T31)">Stock Feverguard</a></div>
+    </div>
+    <figure class="visual wide"><img src="fg-pack.jpg" alt="Feverguard T31 box beside the sensor in its open case"></figure>
+  </div>
+</div>
+<section>
+  <div class="wrap">
+    <div class="fg-grid">
+      <div class="fg-left">
+                <div class="monitor" aria-label="Illustrative overnight temperature reading">
+          <div class="row">
+            <div class="readout"><output id="temp">37.4</output><span>°C</span></div>
+            <div class="clock"><small>Time</small><span id="clock">07:00</span></div>
+          </div>
+          <svg viewBox="0 0 540 190" role="img" aria-label="Line chart of body temperature from 22:00 to 07:00, rising from 36.8 to 38.2 degrees and settling at 37.4">
+            <g stroke="rgba(255,255,255,.14)" stroke-width="1"><line x1="20" y1="120" x2="520" y2="120"/><line x1="20" y1="60" x2="520" y2="60"/></g>
+            <g font-family="Albert Sans, Arial, sans-serif" font-size="11" fill="#93a0b9">
+              <text x="20" y="114">37.0</text><text x="20" y="54">38.0</text>
+              <text x="20" y="182">22:00</text><text x="172" y="182">01:00</text><text x="338" y="182">04:00</text><text x="490" y="182">07:00</text>
+            </g>
+            <path d="M20,132 C100,134 150,130 187,126 S280,50 326,48 S380,62 409,72 S480,92 520,96 L520,160 L20,160 Z" fill="#ff8a6b" opacity=".2"/>
+            <path id="curve" d="M20,132 C100,134 150,130 187,126 S280,50 326,48 S380,62 409,72 S480,92 520,96" fill="none" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round"/>
+            <circle id="dot" cx="520" cy="96" r="7" fill="#ff8a6b" stroke="#ffffff" stroke-width="2.5"/>
+          </svg>
+          <p class="cap">Illustrative reading, not patient data</p>
+        </div>
+      </div>
+      <div>
+        <h2>Made for the nights you would otherwise sit up</h2>
+        <ul class="rows" style="margin-top:24px">
+          <li><b>Continuous</b><p>Readings are taken through the night and shown in the app, so a sleeping child stays asleep.</p></li>
+          <li><b>±0.1 °C</b><p>Stated measurement accuracy of the T31 sensor.</p></li>
+          <li><b>Worn anywhere</b><p>Designed to measure from different areas of the body, including the underarm.</p></li>
+          <li><b>Every age</b><p>Made with babies and young children in mind and suitable for the whole family.</p></li>
+          <li><b>Built to last</b><p>A reusable device with replaceable adhesive bands, sold in packs of 15.</p></li>
+        </ul>
+        <p class="small muted" style="margin-top:20px;max-width:58ch">Feverguard T31 measures and displays body temperature. It does not diagnose, treat or prevent any illness. If you are worried about a child's temperature, contact NHS 111 or your GP. Sold in the UK under the IME-DC &amp; Orkinos brand.</p>
+      </div>
+    </div>
+    <div class="duo">
+      <figure class="photo sq"><img src="fg-wear.jpg" alt="A child wearing the Feverguard sensor under the arm"><figcaption>Worn under the arm</figcaption></figure>
+      <figure class="photo sq"><img src="p-feverguard.jpg" alt="Feverguard T31 sensor in its case with adhesive band, beside the phone app showing a temperature reading"><figcaption>The sensor, its case and the app</figcaption></figure>
+    </div>
+    <figure class="photo wide top" style="margin-top:14px;margin-bottom:0"><img src="temperature.jpg" alt="A child asleep at night beside a parent, with the Feverguard app and sensor"></figure>
+    <div class="cta-band t-coral"><p class="lede">Stock Feverguard T31 in your pharmacy, shop or nursery.</p><a class="btn" href="#contact" data-interest="Temperature (Feverguard T31)">Stock Feverguard</a></div>
+  </div>
+</section>
+</div>
+
+<!-- ============ TESTS ============ -->
+<div class="view" data-view="tests" hidden>
+<div class="hero cat water t-emerald">
+  <div class="wrap flood">
+    <div class="txt">
+      <p class="crumb"><a href="#home">Home</a> / Self-tests</p>
+      <span class="chip">In preparation</span>
+      <h1>Self-tests</h1>
+      <p class="lede">Rapid tests for use at home, with a result in minutes. This range is being finalised. Products will be listed here with full details once they are available in the UK.</p>
+      <div class="actions"><a class="btn" href="#contact" data-interest="Self-tests">Register interest</a></div>
+    </div>
+    <figure class="visual"><img src="tests.jpg" alt="Hands holding a rapid test cassette at home" style="object-position:66% 50%"></figure>
+  </div>
+</div>
+<section>
+  <div class="wrap">
+    <div class="sec-head"><h2>Five tests, planned</h2><p class="lede">These are the tests we plan to bring to the UK. The list will be confirmed as the range is registered.</p></div>
+    <ul class="rows tests">
+      <li><b>Vitamin D</b><p>A check of vitamin D level from a small blood sample.</p><span class="small">Finger-prick blood</span><span class="pill">Planned</span></li>
+      <li><b>Urinary tract infection</b><p>A urine strip test for signs of a urinary tract infection.</p><span class="small">Urine</span><span class="pill">Planned</span></li>
+      <li><b>Menopause</b><p>A urine test for the hormone level associated with menopause.</p><span class="small">Urine</span><span class="pill">Planned</span></li>
+      <li><b>Strep A</b><p>A throat swab test for group A streptococcus.</p><span class="small">Throat swab</span><span class="pill">Planned</span></li>
+      <li><b>Vaginal pH</b><p>A swab test that shows vaginal pH.</p><span class="small">Vaginal swab</span><span class="pill">Planned</span></li>
+    </ul>
+    <p class="small muted note">A self-test gives an indication, not a diagnosis. Speak to a pharmacist or your GP about any result that concerns you.</p>
+        <div class="cta-band t-emerald"><p class="lede">Want to be told when the test range is available?</p><a class="btn" href="#contact" data-interest="Self-tests">Register interest</a></div>
+  </div>
+</section>
+</div>
+
+<!-- ============ COMING NEXT ============ -->
+<div class="view" data-view="coming-next" hidden>
+<div class="hero cat water t-amber">
+  <div class="wrap flood">
+    <div class="txt">
+      <p class="crumb"><a href="#home">Home</a> / Coming next</p>
+      <span class="chip">To be announced</span>
+      <h1>Coming next</h1>
+      <p class="lede">We are adding a fourth category to the range. Details will appear on this page when it is ready.</p>
+      <div class="actions"><a class="btn" href="#contact" data-interest="Something else">Tell us what you need</a></div>
+    </div>
+    <figure class="visual"><img src="coming-next.jpg" alt="Stacked plain cartons on warehouse shelving" style="object-position:72% 50%"></figure>
+  </div>
+</div>
+<section>
+  <div class="wrap">
+    <div class="sec-head"><h2>Tell us what to add</h2><p class="lede">Requests from pharmacies and wholesalers shape what we bring in next. If there is a product you would like to source through us, we would like to hear about it.</p></div>
+    <div class="cta-band t-amber" style="margin-top:0"><p class="lede">One message is enough to start.</p><a class="btn" href="#contact" data-interest="Something else">Tell us what you need</a></div>
+  </div>
+</section>
+</div>
+
+<!-- ============ CONTACT ============ -->
+<div class="view" data-view="contact" hidden>
+<section>
+  <div class="wrap contact">
+    <div>
+      <h1>Trade enquiries</h1>
+      <p class="lede muted" style="margin-top:20px">Tell us what you would like to stock and we will come back with pricing, pack details and documentation.</p>
+      <dl class="details" id="details"></dl>
+    </div>
+    <div>
+      <form id="enquiry" novalidate>
+        <div class="f2">
+          <label for="f-name">Your name<input id="f-name" name="name" autocomplete="name" required></label>
+          <label for="f-org">Organisation<input id="f-org" name="org" autocomplete="organization"></label>
+        </div>
+        <div class="f2">
+          <label for="f-email">Email<input id="f-email" name="email" type="email" autocomplete="email" required></label>
+          <label for="f-type">You are a
+            <select id="f-type" name="type">
+              <option>Pharmacy wholesaler</option><option>Pharmacy</option><option>Clinic or prescriber</option>
+              <option>Retailer</option><option>Nursery or school</option><option>Member of the public</option>
+            </select>
+          </label>
+        </div>
+        <label for="f-interest">Interested in
+          <select id="f-interest" name="interest">
+            <option>Diabetes care (IME-DC)</option>
+            <option>Temperature (Feverguard T31)</option>
+            <option>Self-tests</option>
+            <option>The full range</option>
+            <option>Something else</option>
+          </select>
+        </label>
+        <label for="f-msg">Message<textarea id="f-msg" name="msg" placeholder="Volumes, delivery region, anything we should know"></textarea></label>
+        <div><button class="btn" type="submit">Prepare enquiry</button></div>
+      </form>
+      <div class="out" id="out" aria-live="polite">
+        <b id="out-head">Your enquiry</b>
+        <pre id="out-text"></pre>
+        <div class="actions" style="margin-top:0">
+          <button class="btn ghost" type="button" id="copy">Copy text</button>
+          <a class="btn" id="mail" href="#contact" hidden>Open in email</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+</div>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <div>
+        <img src="logo.png" alt="Orkinos" width="720" height="376">
+        <p class="small muted" style="margin-top:12px">Orkinos Microsystems, United Kingdom</p>
+      </div>
+      <div>
+        <span class="k">Categories</span>
+        <ul>
+          <li><a href="#diabetes">Diabetes care</a></li>
+          <li><a href="#temperature">Temperature</a></li>
+          <li><a href="#tests">Self-tests</a></li>
+          <li><a href="#coming-next">Coming next</a></li>
+        </ul>
+      </div>
+      <div>
+        <span class="k">Company</span>
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#contact">Trade enquiries</a></li>
+          <li><a href="https://imedc.com.tr" rel="noopener">imedc.com.tr</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="legal">
+      <p id="legal-co" hidden>Orkinos Microsystems Ltd is a private limited company registered in England and Wales. Company number <span data-fill="companyNo"></span>. Registered office: <span data-fill="address"></span>.</p>
+      <p>Orkinos Microsystems is the United Kingdom distributor of IME-DC (imedc.com.tr). The products on this site are medical devices. Always read the label and instructions for use. Nothing on this site is medical advice. IME-DC, IME-Fine and Feverguard are brands of their respective owners.</p>
+      <p>© 2026 Orkinos Microsystems.</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* Company details: fill these in once and they appear in Contact and the footer. */
+var COMPANY = { email:"", phone:"", address:"", companyNo:"" };
+
+/* ---------- the shoal ----------
+   Home: the fish gather into a capsule, a drop of blood, a pharmacy cross and a pulse line, in turn.
+   Category pages: they circle the product. */
+var Shoal = (function(){
+  var c = document.getElementById("shoal"), api = { show:function(){} };
+  if (!c || !c.getContext) return api;
+  var x = c.getContext("2d"), W = 0, H = 0, dpr = Math.min(window.devicePixelRatio || 1, 2), fish = [], t = 0, tick = 0, on = false, raf = 0,
+      still = window.matchMedia("(prefers-reduced-motion: reduce)").matches, mx = -9999, my = -9999, seed = 7,
+      host = null, target = null, mode = "glyph", gi = 0, P = null, cx = 0, cy = 0, R = 1, ro = null;
+  function rnd(){ seed = (seed*16807) % 2147483647; return seed/2147483647; }
+
+  function path(pts){ var cum = [0], L = 0, i, a, b; pts = pts.concat([pts[0]]);
+    for (i = 1; i < pts.length; i++){ a = pts[i-1]; b = pts[i]; L += Math.hypot(b[0]-a[0], b[1]-a[1]); cum.push(L); }
+    return { p:pts, cum:cum, L:L }; }
+  function at(Q, u){ var d = ((u % 1) + 1) % 1 * Q.L, i = 1; while (i < Q.cum.length - 1 && Q.cum[i] < d) i++;
+    var a = Q.p[i-1], b = Q.p[i], k = (d - Q.cum[i-1])/((Q.cum[i] - Q.cum[i-1]) || 1); return [a[0] + (b[0]-a[0])*k, a[1] + (b[1]-a[1])*k]; }
+  function stadium(a, b, r, n){ var pts = [], i, th, q, cxs = [a-r, -(a-r), -(a-r), a-r], cys = [b-r, b-r, -(b-r), -(b-r)];
+    for (q = 0; q < 4; q++) for (i = 0; i <= n; i++){ th = (q + i/n)*Math.PI/2; pts.push([cxs[q] + Math.cos(th)*r, cys[q] + Math.sin(th)*r]); }
+    return pts; }
+  var GLYPHS = (function(){
+    var drop = [], i, th;
+    for (i = 0; i < 80; i++){ th = i/80*Math.PI*2; drop.push([0.78*Math.sin(th)*Math.pow(Math.sin(th/2), 1.25), -Math.cos(th)*0.98 + 0.1]); }
+    var k = 0.34, cross = [[-k,-1],[k,-1],[k,-k],[1,-k],[1,k],[k,k],[k,1],[-k,1],[-k,k],[-1,k],[-1,-k],[-k,-k]];
+    var beat = [[-1.5,0],[-0.62,0],[-0.47,-0.22],[-0.32,0],[-0.16,0],[-0.02,-1],[0.14,0.72],[0.28,0],[0.6,0],[0.76,-0.3],[0.92,0],[1.5,0]],
+        pulse = beat.concat(beat.slice().reverse().map(function(p){ return [p[0], p[1] + 0.05]; }));
+    return [path(stadium(0.56, 1, 0.56, 14)), path(drop), path(cross), path(pulse)];
+  })();
+
+  function mk(){ var d = rnd(); return { x:rnd()*W, y:rnd()*H, vx:1, vy:0, s:3.5 + d*d*11, sp:0.7 + d*0.9, o:rnd()*6.283, u:rnd(), off:rnd()*2 - 1, free:rnd() < 0.16, warm:rnd() > 0.955 }; }
+  function layout(){
+    if (mode === "glyph"){
+      var narrow = W < 700; cx = W*(narrow ? 0.6 : 0.74); cy = H*(narrow ? 0.2 : 0.47);
+      R = narrow ? Math.min(W*0.2, H*0.14) : Math.min(W*0.15, H*0.34); P = GLYPHS[gi];
+    } else if (target){
+      var r = target.getBoundingClientRect(), h = c.getBoundingClientRect(), cut = target.classList.contains("cut"),
+          a = r.width/2 + (cut ? 6 : 34), b = r.height/2 + (cut ? 14 : 34);
+      cx = r.left - h.left + r.width/2; cy = r.top - h.top + r.height/2; R = 1;
+      P = path(stadium(a, b, cut ? Math.min(a, b) : 46, 12));
+    }
+  }
+  function size(){
+    if (!host) return; W = c.clientWidth; H = c.clientHeight; if (!W || !H) return;
+    c.width = W*dpr; c.height = H*dpr; x.setTransform(dpr,0,0,dpr,0,0);
+    var n = mode === "glyph" ? Math.round(Math.min(330, Math.max(120, W*H/3200))) : Math.round(Math.min(150, Math.max(70, W*H/5200)));
+    while (fish.length < n) fish.push(mk()); fish.length = n;
+    layout();
+    for (var i = 0; i < 460; i++) step(true);
+    draw();
+  }
+  function step(warm){
+    t += 0.006;
+    if (!warm && mode === "glyph" && ++tick % 560 === 0){ gi = (gi + 1) % GLYPHS.length; P = GLYPHS[gi]; }
+    if (!P) return;
+    var Lpx = P.L*R, band = mode === "glyph" ? 0.13 : 0.05;
+    for (var i = 0; i < fish.length; i++){
+      var f = fish[i], fx, fy;
+      if (f.free){
+        var a = Math.sin(f.x*0.0032 + t*1.1 + f.o*0.2)*1.3 + Math.cos(f.y*0.0041 - t*0.8 + f.o*0.1)*1.3;
+        fx = Math.cos(a); fy = Math.sin(a)*0.55;
+      } else {
+        f.u += f.sp*1.45/Lpx;
+        var k = 1 + f.off*band, p = at(P, f.u), q = at(P, f.u + 6/Lpx),
+            tx = cx + p[0]*R*k, ty = cy + p[1]*R*k, gx = (q[0] - p[0]), gy = (q[1] - p[1]), gl = Math.hypot(gx, gy) || 1,
+            dx = tx - f.x, dy = ty - f.y, d = Math.hypot(dx, dy) + 0.001, pull = Math.min(2.4, d*0.045);
+        fx = gx/gl*0.9 + dx/d*pull; fy = gy/gl*0.9 + dy/d*pull;
+      }
+      var px = f.x - mx, py = f.y - my, pd = px*px + py*py;
+      if (pd < 24000){ var m = (24000 - pd)/24000*3.4, z = Math.sqrt(pd) + 1; fx += px/z*m; fy += py/z*m; }
+      f.vx += (fx*f.sp - f.vx)*0.06; f.vy += (fy*f.sp - f.vy)*0.06;
+      f.x += f.vx*1.6; f.y += f.vy*1.6;
+      if (f.free){ if (f.x < -60) f.x = W + 60; else if (f.x > W + 60) f.x = -60; if (f.y < -60) f.y = H + 60; else if (f.y > H + 60) f.y = -60; }
+    }
+  }
+  function draw(){
+    x.clearRect(0,0,W,H);
+    for (var i = 0; i < fish.length; i++){
+      var f = fish[i], s = f.s, depth = (s - 3.5)/11, w = Math.sin(t*46*f.sp + f.o)*0.3;
+      x.save(); x.translate(f.x, f.y); x.rotate(Math.atan2(f.vy, f.vx));
+      x.fillStyle = f.warm ? "rgba(255,170,130," + (0.35 + depth*0.55) + ")" : "rgba(176,204,255," + (0.14 + depth*0.6) + ")";
+      x.beginPath(); x.moveTo(s*1.05, 0); x.quadraticCurveTo(s*0.35, -s*0.42, -s*0.75, -s*0.08);
+      x.lineTo(-s*1.55, -s*0.46 + w*s); x.lineTo(-s*1.28, w*s*0.5); x.lineTo(-s*1.55, s*0.46 + w*s);
+      x.lineTo(-s*0.75, s*0.08); x.quadraticCurveTo(s*0.35, s*0.42, s*1.05, 0); x.fill();
+      x.restore();
+    }
+  }
+  function loop(){ if (!on) return; if (!document.hidden){ step(false); draw(); } raf = requestAnimationFrame(loop); }
+  window.addEventListener("pointermove", function(e){ if (!host) return; var r = c.getBoundingClientRect(); mx = e.clientX - r.left; my = e.clientY - r.top; });
+  if (window.ResizeObserver) ro = new ResizeObserver(size); else window.addEventListener("resize", size);
+
+  api.show = function(el){
+    cancelAnimationFrame(raf); on = false; host = el;
+    if (!el){ c.style.display = "none"; return; }
+    c.style.display = ""; el.insertBefore(c, el.firstChild);
+    target = el.querySelector(".visual"); mode = target ? "orbit" : "glyph"; c.className = mode;
+    fish.length = 0; seed = 7; t = 0; tick = 0; gi = 0; mx = my = -9999;
+    if (ro){ ro.disconnect(); ro.observe(el); }
+    size();
+    if (!still){ on = true; raf = requestAnimationFrame(loop); }
+  };
+  return api;
+})();
+
+(function(){
+  // routing: one view per hash
+  var VIEWS = ["home","diabetes","temperature","tests","coming-next","contact"];
+  var views = document.querySelectorAll("[data-view]"), links = document.querySelectorAll("[data-nav]");
+  function route(){
+    var h = (location.hash || "").slice(1); if (VIEWS.indexOf(h) < 0) h = "home";
+    views.forEach(function(v){ v.hidden = v.getAttribute("data-view") !== h; });
+    links.forEach(function(a){ if (a.getAttribute("data-nav") === h) a.setAttribute("aria-current","page"); else a.removeAttribute("aria-current"); });
+    Shoal.show(document.querySelector('[data-view="' + h + '"] .water'));
+    window.scrollTo(0,0);
+    if (h === "temperature") place(1);
+  }
+  document.querySelectorAll("[data-interest]").forEach(function(a){
+    a.addEventListener("click", function(){ var s = document.getElementById("f-interest"), want = a.getAttribute("data-interest");
+      for (var i = 0; i < s.options.length; i++) if (s.options[i].text === want) s.selectedIndex = i; });
+  });
+
+  // contact details
+  var rows = [["Email","email"],["Phone","phone"],["Registered office","address"],["Company number","companyNo"]], dl = document.getElementById("details");
+  rows.forEach(function(r){
+    if (!COMPANY[r[1]]) return;
+    var d = document.createElement("div"), dt = document.createElement("dt"), dd = document.createElement("dd");
+    dt.textContent = r[0]; dd.textContent = COMPANY[r[1]]; d.appendChild(dt); d.appendChild(dd); dl.appendChild(d);
+  });
+  document.querySelectorAll("[data-fill]").forEach(function(el){ el.textContent = COMPANY[el.getAttribute("data-fill")] || ""; });
+  if (COMPANY.companyNo && COMPANY.address) document.getElementById("legal-co").hidden = false;
+
+  // pen needles, one scale: 1 mm = 17 px
+  var set = document.getElementById("needleset"), ns = "http://www.w3.org/2000/svg", MM = 17;
+  [4,5,6,8].forEach(function(mm, i){
+    var x = 50 + i*125, base = 212, hub = 34;
+    function el(tag, a){ var e = document.createElementNS(ns, tag); for (var k in a) e.setAttribute(k, a[k]); set.appendChild(e); return e; }
+    el("rect",{x:x-24,y:base-hub,width:48,height:hub,rx:3,fill:"#2d55d8"});
+    el("rect",{x:x-9,y:base-hub-12,width:18,height:12,rx:3,fill:"#0b1230"});
+    el("line",{x1:x,y1:base-hub-12,x2:x,y2:base-hub-12-mm*MM,stroke:"#0b1230","stroke-width":2.5,"stroke-linecap":"round"});
+    var t = el("text",{x:x+12,y:base-hub-12-mm*MM+14,"font-family":"Cormorant, Georgia, serif","font-weight":500,"font-size":30,fill:"#0b1230"}); t.textContent = mm + " mm";
+    var g = el("text",{x:x,y:238,"text-anchor":"middle","font-family":"Albert Sans, Arial, sans-serif","font-size":12,"font-weight":600,fill:"#566080"}); g.textContent = mm === 8 ? "31G" : "32G";
+  });
+
+  // feverguard readout follows the curve
+  var curve = document.getElementById("curve"), dot = document.getElementById("dot"), temp = document.getElementById("temp"), clock = document.getElementById("clock");
+  function place(p){
+    try { if (!curve.getTotalLength()) return; } catch (e) { return; }
+    var pt = curve.getPointAtLength(curve.getTotalLength()*p);
+    dot.setAttribute("cx", pt.x); dot.setAttribute("cy", pt.y);
+    temp.textContent = (36.5 + (150 - pt.y)/60).toFixed(1);
+    var mins = Math.round(((pt.x - 20)/500*9*60)/5)*5 + 22*60, h = Math.floor(mins/60)%24, m = mins%60;
+    clock.textContent = (h<10?"0":"")+h+":"+(m<10?"0":"")+m;
+  }
+  if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches){
+    var start = null, RUN = 9000, HOLD = 3500;
+    requestAnimationFrame(function tick(ts){ if (start === null) start = ts; var t = (ts - start) % (RUN + HOLD); place(Math.min(t/RUN, 1)); requestAnimationFrame(tick); });
+  }
+
+  // enquiry
+  var form = document.getElementById("enquiry"), out = document.getElementById("out"), text = document.getElementById("out-text"),
+      mail = document.getElementById("mail"), head = document.getElementById("out-head"), copy = document.getElementById("copy");
+  form.addEventListener("submit", function(e){
+    e.preventDefault();
+    var v = function(id){ return document.getElementById(id).value.trim(); };
+    if (!v("f-name") || !/^\S+@\S+\.\S+$/.test(v("f-email"))){ head.textContent = "Add your name and a valid email address, then try again"; text.textContent = ""; out.classList.add("show"); return; }
+    var body = "Enquiry for Orkinos Microsystems\n\nName: "+v("f-name")+"\nOrganisation: "+(v("f-org")||"-")+"\nEmail: "+v("f-email")+"\nType: "+v("f-type")+"\nInterested in: "+v("f-interest")+"\n\n"+(v("f-msg")||"");
+    text.textContent = body;
+    if (COMPANY.email){ head.textContent = "Your enquiry is ready. Send it to " + COMPANY.email; mail.hidden = false;
+      mail.href = "mailto:"+COMPANY.email+"?subject="+encodeURIComponent("Trade enquiry: "+v("f-interest"))+"&body="+encodeURIComponent(body); }
+    else head.textContent = "Your enquiry is ready. Copy it and send it to us";
+    out.classList.add("show");
+  });
+  copy.addEventListener("click", function(){ navigator.clipboard.writeText(text.textContent).then(function(){ copy.textContent = "Copied"; }, function(){ copy.textContent = "Select the text and copy"; }); });
+
+  window.addEventListener("hashchange", route);
+  route();
+})();
+</script>
+</body>
+</html>
